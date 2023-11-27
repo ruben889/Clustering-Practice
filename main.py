@@ -109,7 +109,7 @@ if __name__ == '__main__':
     plt.scatter(kmeans.centroids[:,0], kmeans.centroids[:, 1], c=range(len(kmeans.centroids)), s=200, edgecolor='black')
 
 
-    plt.legend(['V1,V2', 'Mean', 'maxV2 Value', 'minV2 Value'])
+    plt.legend(['V1,V2', 'Mean', 'maxV2 Value', 'minV2 Value' , 'Cluster'])
     plt.title('Banknote Authentication Wavelets')
 
     plt.xlabel("V1 Values")
