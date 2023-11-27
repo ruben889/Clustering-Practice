@@ -69,9 +69,10 @@ if __name__ == '__main__':
 
     datapoints = np.array(tempdata)
 
-    kmeans = Kmeans(k=3)
+    kmeans = Kmeans(k=4)
 
     labels = kmeans.fit(datapoints,500)
+    labels = np.array(labels)
     print(labels)
     print(len(labels))
 
@@ -98,12 +99,12 @@ if __name__ == '__main__':
     # label min V1 and maximum value V1
     # mean (red dot) labelled standard deviation of bright red 1 to -1 and weaker red 2 standard deviation 2 to -2
 
-    plt.scatter(datapoints[:, 0], datapoints[:, 1], c='black', alpha=0.75)
+    plt.scatter(datapoints[:, 0], datapoints[:, 1], c=labels, alpha=0.75)
     plt.scatter(meanx, meany, c='black', label='mean')
     plt.text(meanx, meany, 'Mean', color='Red', fontsize=10)
     plt.axhline(y=outlierMax, color='red', alpha=.75, linestyle="dashed")
     plt.axhline(y=outlierMin, color='red', alpha=.75, linestyle="dashed")
-    plt.scatter(kmeans.centroids[:,0], kmeans.centroids[:, 1], c=range(len(kmeans.centroids)), s= 200)
+    plt.scatter(kmeans.centroids[:,0], kmeans.centroids[:, 1], c=range(len(kmeans.centroids)), s= 200, label = 'cluster' )
 
 
     plt.legend(['V1,V2', 'Mean', 'maxV2 Value', 'minV2 Value'])
