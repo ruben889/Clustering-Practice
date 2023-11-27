@@ -27,8 +27,6 @@ class Kmeans:
             for point in data_set:
                 dist = Kmeans.euclidean_distance(point, self.centroids)
                 cluster_num = np.argmin(dist)
-                # alphaValue = np.argmin(dist) ?
-                # clusterList.append(cluster_num, alphaValue)
                 clusterList.append(cluster_num)
 
             clusterList = np.array(clusterList)
@@ -99,12 +97,16 @@ if __name__ == '__main__':
     # label min V1 and maximum value V1
     # mean (red dot) labelled standard deviation of bright red 1 to -1 and weaker red 2 standard deviation 2 to -2
 
+    # Blend the colors together, depending on their distance to the nearest centroid
+    # Make your own Hashtable for colors
+
+
     plt.scatter(datapoints[:, 0], datapoints[:, 1], c=labels, alpha=0.75)
     plt.scatter(meanx, meany, c='black', label='mean')
     plt.text(meanx, meany, 'Mean', color='Red', fontsize=10)
     plt.axhline(y=outlierMax, color='red', alpha=.75, linestyle="dashed")
     plt.axhline(y=outlierMin, color='red', alpha=.75, linestyle="dashed")
-    plt.scatter(kmeans.centroids[:,0], kmeans.centroids[:, 1], c=range(len(kmeans.centroids)), s= 200, label = 'cluster' )
+    plt.scatter(kmeans.centroids[:,0], kmeans.centroids[:, 1], c=range(len(kmeans.centroids)), s=200, edgecolor='black')
 
 
     plt.legend(['V1,V2', 'Mean', 'maxV2 Value', 'minV2 Value'])
